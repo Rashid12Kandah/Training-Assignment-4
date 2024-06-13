@@ -2,4 +2,14 @@
 
 csc Concatation.cs
 
-mono Concatation.exe "path/to/img1" "path/to/img2" method \in {0: horizontal ,1: Vertical}
+mono Concatation.exe "path/to/img1" "path/to/img2" method -> {0: horizontal ,1: Vertical}
+
+## Images
+
+The images used in the example are of different sizes
+
+#### Apple
+<img src="" alt="Apple" size="250" height="250">
+
+#### Orange
+<img src="" alt="Apple" size="250" height="250">
