@@ -13,3 +13,12 @@ The images used in the example are of different sizes
 
 #### Orange
 <img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/apple.jpeg" alt="Apple" size="250" height="250">
+
+
+## Horizontal Concat
+
+<img src="" alt="Horizontal Concat">
+
+## Vertical Concat
+
+<img src="" alt="Vertical Concat">
