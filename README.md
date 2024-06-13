@@ -17,7 +17,7 @@ The images used in the example are of different sizes
 
 ## Horizontal Concat
 
-<img src="" alt="Horizontal Concat">
+<img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/0_d0da2367-ebc9-487d-ae7c-4bd985335dbd.jpg" alt="Horizontal Concat">
 
 ## Vertical Concat
 
