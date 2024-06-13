@@ -12,4 +12,4 @@ The images used in the example are of different sizes
 <img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/Oranges.jpeg" alt="Apple" size="250" height="250">
 
 #### Orange
-<img src="" alt="Apple" size="250" height="250">
+<img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/apple.jpeg" alt="Apple" size="250" height="250">
