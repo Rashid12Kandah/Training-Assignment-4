@@ -21,4 +21,4 @@ The images used in the example are of different sizes
 
 ## Vertical Concat
 
-<img src="" alt="Vertical Concat">
+<img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/1_72af43a1-ab13-4a5f-8f9b-3c04122f8811.jpg" alt="Vertical Concat">
