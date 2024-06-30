@@ -1,4 +1,4 @@
-# This is the concatonation assignment
+# Concatonation assignment
 
 csc Concatation.cs
 
@@ -17,8 +17,8 @@ The images used in the example are of different sizes
 
 ## Horizontal Concat
 
-<img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/0_d0da2367-ebc9-487d-ae7c-4bd985335dbd.jpg" alt="Horizontal Concat">
+<img src="https://github.com/Rashid12Kandah/Training-Assignment-4/blob/master/0_f77a91e6-1f4e-41d0-ac48-e228c9655d0d.jpg" alt="Horizontal Concat">
 
 ## Vertical Concat
 
-<img src="https://github.com/Rashid12Kandah/Training-Assignment-2/blob/master/1_72af43a1-ab13-4a5f-8f9b-3c04122f8811.jpg" alt="Vertical Concat">
+<img src="https://github.com/Rashid12Kandah/Training-Assignment-4/blob/master/1_bed7acff-bab3-4c7d-93ac-2c51a99af5dc.jpg" alt="Vertical Concat">
