@@ -140,6 +140,10 @@ public class Concat{
     }
 
     public static void Main(string[] args){
+        if(args.Length != 3){
+            Console.WriteLine("Usage: Concatation.exe <img1Path> <img2Path> <axis>");
+            return;
+        }
         string img1Path = args[0];
         string img2Path = args[1];
         int axis = int.Parse(args[2]);
