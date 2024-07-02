@@ -63,9 +63,11 @@ public class Concat{
         if(axis == 0){
             width = img1.Width + img2.Width;
             height = Math.Max(img1.Height, img2.Height);
-        }else{
+        }else if(axis == 1){
             width = Math.Max(img1.Width, img2.Width);
             height = img1.Height + img2.Height;
+        }else{
+            return -1;
         }
 
         Bitmap concatImage = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
