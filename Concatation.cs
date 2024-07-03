@@ -58,27 +58,35 @@ public class Concat{
         Bitmap img1 = GrayScale(img1_O);
         Bitmap img2 = GrayScale(img2_O);
 
-        int width, height;
+        int width1 = img1.Width, height1 = img1.Height;
+        int width2 = img2.Width, height2 = img2.Height;
+
+        int conWidth, conHeight;
 
         if(axis == 0){
-            width = img1.Width + img2.Width;
-            height = Math.Max(img1.Height, img2.Height);
+            conWidth = width1 + width2;
+            conHeight = Math.Max(height1, height2);
         }else if(axis == 1){
-            width = Math.Max(img1.Width, img2.Width);
-            height = img1.Height + img2.Height;
+            conWidth = Math.Max(width1, width2);
+            conHeight = height1 + height2;
         }else{
             return -1;
         }
 
-        Bitmap concatImage = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
+        Bitmap concatImage = new Bitmap(conWidth, conHeight, PixelFormat.Format8bppIndexed);
 
-        BitmapData img1Data = img1.LockBits(new Rectangle(0,0, img1.Width, img1.Height), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
-        BitmapData img2Data = img2.LockBits(new Rectangle(0,0, img2.Width, img2.Height), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
-        BitmapData concatData = concatImage.LockBits(new Rectangle(0,0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format8bppIndexed);
+        BitmapData img1Data = img1.LockBits(new Rectangle(0,0, width1, height1), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
+        BitmapData img2Data = img2.LockBits(new Rectangle(0,0, width2, height2), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
+        BitmapData concatData = concatImage.LockBits(new Rectangle(0,0, conWidth, conHeight), ImageLockMode.ReadWrite, PixelFormat.Format8bppIndexed);
 
         int img1Stride = img1Data.Stride;
+        int img1Offset = img1Stride - width1;
+        
         int img2Stride = img2Data.Stride; 
+        int img2Offset = img2Stride - width2;
+        
         int concatStride = concatData.Stride;
+        int concatOffset = concatStride - conWidth
 
         if(axis == 0){
             unsafe{
@@ -86,24 +94,24 @@ public class Concat{
                 byte * img2Ptr = (byte *)(void *) img2Data.Scan0;
                 byte * concatPtr = (byte *)(void *) concatData.Scan0;
 
-                for(int y = 0; y<height; y++){
-                    for(int x = 0; x<width; x++){
-                        if(x<img1.Width && y<img1.Height){
+                for(int y = 0; y<conHeight; y++){
+                    for(int x = 0; x<conWidth; x++){
+                        if(x<width1 && y<height1){
                             concatPtr[0] = img1Ptr[0];
                             img1Ptr += 1;
-                        }else if(x>=img1.Width && y<img1.Height){
+                        }else if(x>=width1 && y<height1){
                             concatPtr[0] = img2Ptr[0];
                             img2Ptr += 1;
-                        }else if(y>=img1.Height){
+                        }else if(y>=height1){
                             // concatPtr[0] = img2Ptr[0];
                             concatPtr[0] = 255;
                             img2Ptr += 1;
                         }
                         concatPtr += 1;
                     }
-                    img1Ptr += img1Stride;
-                    img2Ptr += img2Stride;
-                    concatPtr += concatStride;
+                    img1Ptr += img1Offset;
+                    img2Ptr += img2Offset;
+                    concatPtr += concatOffset;
                 }
             }
             return concatImage;
@@ -114,23 +122,23 @@ public class Concat{
                 byte * img2Ptr = (byte *)(void *) img2Data.Scan0;
                 byte * concatPtr = (byte *)(void *) concatData.Scan0;
 
-                for(int y = 0; y<height; y++){
-                    for(int x = 0; x<width; x++){
-                        if(y<img1.Height && x<img1.Width){
+                for(int y = 0; y<conHeight; y++){
+                    for(int x = 0; x<conWidth; x++){
+                        if(y<height1 && x<width1){
                             concatPtr[0] = img1Ptr[0];
                             img1Ptr += 1;
-                        }else if(y>=img1.Height && x<img1.Width){
+                        }else if(y>=height1 && x<width1){
                             concatPtr[0] = img2Ptr[0];
                             img2Ptr += 1;
-                        }else if(x>=img1.Width){
+                        }else if(x>=width1){
                             concatPtr[0] = img2Ptr[0];
                             img2Ptr += 1;
                         }
                         concatPtr += 1;
                     }
-                    img1Ptr += img1Stride;
-                    img2Ptr += img2Stride;
-                    concatPtr += concatStride;
+                    img1Ptr += img1Offset;
+                    img2Ptr += img2Offset;
+                    concatPtr += concatOffset;
                 }
             }
             img1.UnlockBits(img1Data);
