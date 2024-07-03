@@ -55,8 +55,11 @@ public class Concat{
     }
 
     public static Bitmap Concate(Bitmap img1_O, Bitmap img2_O, int axis){
-        Bitmap img1 = GrayScale(img1_O);
-        Bitmap img2 = GrayScale(img2_O);
+        if( img1_O.PixelFormat != PixelFormat.Format8bppIndexed || img2_O.PixelFormat != PixelFormat.Format8bppIndexed)
+        {
+            Bitmap img1 = GrayScale(img1_O);
+            Bitmap img2 = GrayScale(img2_O);
+        }
 
         int width1 = img1.Width, height1 = img1.Height;
         int width2 = img2.Width, height2 = img2.Height;
